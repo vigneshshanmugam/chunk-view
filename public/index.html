@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chunk viewer</title>
+    <link rel='stylesheet' href='./app.css'>
+</head>
+<body>
+	<header class="header">
+		<h2>Chunk Viewer</h2>
+	</header>
+  	<main>
+        <div class="container">
+    	    <label>Endpoint address </label>
+            <input class="endpoint" placeholder="www.example.come" type="text" value="">
+            <input id="enter" type="button" value="Enter">
+            <canvas id="result" width="300" height="300"></canvas>
+            <div class="error"></div>
+        </div>
+  	</main>
+  	<footer class="footer">
+        <script async defer src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
+		<script async defer src="./app.bundle.js"></script>
+  	</footer>
+</body>
+</html>
