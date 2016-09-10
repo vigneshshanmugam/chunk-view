@@ -14,12 +14,12 @@ module.exports = function (url) {
             if (!headers['transfer-encoding']) {
                 reject(new Error('Endpoint does not have chunked response'));
             }
-            data.push({ time: Date.now() - startTime, length: 0 });
+            data.push([ Date.now() - startTime, 0 ]);
         };
 
         const onData = (chunk) => {
             var chunkLength = data[data.length - 1].length + chunk.length;
-            data.push({ time: Date.now() - startTime, length: chunkLength});
+            data.push([ Date.now() - startTime, chunkLength ]);
             chunks.push(chunk);
         };
 

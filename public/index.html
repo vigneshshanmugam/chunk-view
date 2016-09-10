@@ -8,19 +8,22 @@
 </head>
 <body>
 	<header class="header">
-		<h2>Chunk Viewer</h2>
+		<h1>Chunk Viewer</h1>
 	</header>
   	<main>
-        <div class="container">
-    	    <label>Endpoint address </label>
+        <section class="entry">
+    	    <label>Enter Url</label>
             <input class="endpoint" placeholder="www.example.come" type="text" value="">
-            <input id="enter" type="button" value="Enter">
-            <canvas id="result" width="300" height="300"></canvas>
-            <div class="error"></div>
+            <button id="submit">Submit</button>
+        </section>
+        <section class="result">
+            <div id="chart"></div>
+            <p class="error"></p>
+        </section>
         </div>
   	</main>
   	<footer class="footer">
-        <script async defer src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.2/Chart.min.js"></script>
+        <script async defer src="https://www.gstatic.com/charts/loader.js"></script>
 		<script async defer src="./app.bundle.js"></script>
   	</footer>
 </body>

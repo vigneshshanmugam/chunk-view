@@ -1,7 +1,25 @@
 body {
-    box-sizing: border-box;
+    max-width: 800px;
+    margin: 10px auto
 }
 
-canvas{
-    position: absolute;
+section label {
+    font-size: 16px;
+}
+
+section input {
+    margin: 0 12px;
+}
+
+section button:hover {
+    cursor: pointer;
+}
+
+.result #chart {
+    margin: 20px 0;
+}
+
+.result .error {
+    font-size: 20px;
+    color: red;
 }

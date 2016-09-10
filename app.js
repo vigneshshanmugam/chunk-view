@@ -1,13 +1,36 @@
 (function(doc) {
     const processChunk = '/process';
-    const context = doc.getElementById('result').getContext('2d');
-    const enterBtn = doc.getElementById('enter');
+    const submitBtn = doc.getElementById('submit');
     const error = doc.querySelector('.error');
 
-    enterBtn.addEventListener('click', () => {
+    function triggerGoogleChart(chartData) {
+        error.innerHTML = '';
+        google.charts.load('current', {packages: ['line']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            const data = new google.visualization.DataTable();
+            data.addColumn('number', 'Time in ms');
+            data.addColumn('number', 'Chunk length');
+            data.addRows(chartData);
+
+            const options = {
+                chart: {
+                    title: 'Chunked response lengths',
+                },
+                width: 700,
+                height: 400
+            };
+            const chart = new google.charts.Line(doc.getElementById('chart'));
+            chart.draw(data, options);
+        }
+    }
+
+
+    submitBtn.addEventListener('click', () => {
         const endpoint = doc.querySelectorAll('.endpoint')[0].value;
         if (!endpoint) {
-            return error.innerHTML = 'Please provide endpoint';
+            return error.innerHTML = 'Please enter the endpoint';
         }
 
         fetch(processChunk, {
@@ -26,27 +49,12 @@
             }
             return response.json();
         })
-        .then(({ result, chunks }) => {
-            console.log(chunks[0]);
-            var chart = new Chart(context, {
-                type: 'line',
-                data: {
-                    datasets: [
-                        {
-                            label: 'Chunked Response',
-                            data: result,
-                            spanGaps: false,
-                        }
-                    ]
-                },
-                options: {
-                    
-                }
-            });
+        .then(({ data, chunks }) => {
+            triggerGoogleChart(data);
         })
         .catch((message) => {
             error.innerHTML = message;
         });
         
-    }, false);
+    }, { passive: true });
 })(window.document);
