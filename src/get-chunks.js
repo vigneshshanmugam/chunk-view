@@ -1,13 +1,16 @@
 const request = require('request');
 
-module.exports = function (url) {
+module.exports = function (url, ua) {
     const data = [];
     const chunks = [];
     const startTime = Date.now();
     const options = {
         url : url,
         encoding: 'utf-8',
-        gzip: true
+        gzip: true,
+        headers: {
+            'User-Agent': ua
+        }
     };
 
     return new Promise((resolve, reject) => {

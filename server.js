@@ -7,7 +7,8 @@ const getChunks = require('./src/get-chunks');
 app.use(bodyParser.json());
 app.post('/process', (request, response) => {
     const endpoint = request.body.endpoint;
-    return getChunks(endpoint)
+    const userAgent = request.headers['user-agent'];
+    return getChunks(endpoint, userAgent)
         .then((chunkObj) => {
             response.json(chunkObj);
         }).catch((err) => {
