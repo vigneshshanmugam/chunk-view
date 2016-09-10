@@ -6,13 +6,14 @@ module.exports = function (url) {
     const startTime = Date.now();
     const options = {
         url : url,
-        encoding: 'utf-8'
+        encoding: 'utf-8',
+        gzip: true
     };
 
     return new Promise((resolve, reject) => {
         const onResponse = ({headers = {}}) => {
             if (!headers['transfer-encoding']) {
-                reject(new Error('Endpoint does not have chunked response'));
+                reject(new Error('Endpoint does not have chunked response, Transfer Encoding: chunked is not set'));
             }
             data.push([ Date.now() - startTime, 0 ]);
         };
