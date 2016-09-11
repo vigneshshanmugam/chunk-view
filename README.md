@@ -1,7 +1,7 @@
 # chunk-view
 Visualize http chunks for an endpoint.
 
-Demo - [here](https://chunk-view-fknotjnayb.now.sh/)
+Demo - [here](https://chunk-view-evpytcjatr.now.sh)
 
 I beleive everyone knows why optimizing Time to First Byte(TTFB) is an important metric for improving
 performance of your website. By flushing the http response as soon as possible, the browser can incrementally parse the
