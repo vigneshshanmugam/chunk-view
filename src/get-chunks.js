@@ -24,7 +24,7 @@ module.exports = function (url, ua) {
         const onData = (chunk) => {
             var chunkLength = data[data.length - 1].length + chunk.length;
             data.push([ Date.now() - startTime, chunkLength ]);
-            chunks.push(chunk);
+            chunks.push([chunk.length, chunk]);
         };
 
         const onEnd = () => {

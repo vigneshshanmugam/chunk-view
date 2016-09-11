@@ -17,14 +17,29 @@
                 chart: {
                     title: 'Chunked response lengths',
                 },
-                width: 700,
-                height: 400
+                width: '100%',
+                height: '100%'
             };
             const chart = new google.charts.Line(doc.getElementById('chart'));
             chart.draw(data, options);
         }
     }
 
+    function drawChunks(chunks) {
+        var data = new google.visualization.DataTable();
+        data.addColumn('number', 'Chunk Length');
+        data.addColumn('string', 'Chunk Data');
+        data.addRows(chunks);
+        var table = new google.visualization.Table(document.getElementById('chunk'));
+        const options = {
+            showRowNumber: false, 
+            allowHtml: true, 
+            width: '100%', 
+            height: '100%',
+            sort: 'disable'
+        };
+        table.draw(data, options);
+    }
 
     submitBtn.addEventListener('click', () => {
         const endpoint = doc.querySelectorAll('.endpoint')[0].value;
@@ -48,6 +63,7 @@
         })
         .then(({ data, chunks }) => {
             triggerGoogleChart(data);
+            drawChunks(chunks);
         })
         .catch((message) => {
             error.innerHTML = message;

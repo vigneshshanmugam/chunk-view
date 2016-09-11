@@ -1,6 +1,10 @@
 body {
     max-width: 800px;
-    margin: 10px auto
+    margin: 10px auto !important;
+}
+
+header, section {
+    text-align: center;
 }
 
 section label {
@@ -16,7 +20,7 @@ section button:hover {
 }
 
 .result #chart {
-    margin: 20px 0;
+    margin: 25px 0;
 }
 
 .result .error {
