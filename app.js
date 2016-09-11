@@ -5,7 +5,6 @@
 
     function triggerGoogleChart(chartData) {
         error.innerHTML = '';
-        google.charts.load('current', {packages: ['line']});
         google.charts.setOnLoadCallback(drawChart);
 
         function drawChart() {
@@ -38,9 +37,7 @@
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                endpoint: endpoint
-            })
+            body: JSON.stringify({ endpoint: endpoint })
         }).then((response) => {
             if (!response.ok) {
                 return response.text().then(message => {
